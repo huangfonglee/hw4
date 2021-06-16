@@ -38,15 +38,31 @@ int main() {
 }
 
 void RP (Arguments *in, Reply *out)   {
-    bool success = true;
+   bool success = true;
 
-    double velocity;
-    double time1;
-    double time2;
-    // In this scenario, when using RPC delimit the two arguments with a space.
-    d1 = in->getArg<double>();
-    d2 = in->getArg<double>();
-    P = in->getArg<char>();
+   double velocity;
+   double time1;
+   double time2;
+   // In this scenario, when using RPC delimit the two arguments with a space.
+   d1 = in->getArg<double>();
+   d2 = in->getArg<double>();
+   P = in->getArg<char>();
+   if (P == 'N') {
+      car.turn(100, 0.3);
+      ThisThread::sleep_for(600ms);
+      car.stop();
+      ThisThread::sleep_for(500ms);
+   } else if (P == 'S') {
+      car.turn(100, 0.3);
+      ThisThread::sleep_for(1800ms);
+      car.stop();
+      ThisThread::sleep_for(500ms);
+   } else if (P == 'E') {
+      car.turn(100, 0.3);
+      ThisThread::sleep_for(1200ms);
+      car.stop();
+      ThisThread::sleep_for(500ms);
+   }
     // Have code here to call another RPC function to wake up specific led or close it.
    velocity = 15.4;
    time1 = 1000*(d1+12.5)/velocity;
